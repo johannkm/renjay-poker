@@ -38,6 +38,24 @@ def test_straight_flush():
   check_hand([Card(1,1), Card(2,1), Card(3,1), Card(4,1), Card(5,1)], hands.STRAIGHT_FLUSH)
   check_hand([Card(1,2), Card(2,1), Card(3,1), Card(4,1), Card(5,1), Card(10,1)], hands.FLUSH)
 
+  check_hand(
+    [
+      Card(2,2),
+      Card(2,3),
+      Card(4,1),
+      Card(4,4),
+      Card(6,1),
+      Card(6,3),
+      Card(7,1),
+      Card(7,2),
+      Card(9,1),
+      Card(10,1),
+      Card(11,2),
+      Card(12,1),
+      Card(12,3),
+      Card(13,2)
+    ], hands.FLUSH)
+
 def test_4_kind():
   check_hand([Card(1,1), Card(1,2), Card(1,3), Card(1,4)], hands.FOUR_KIND)
 
@@ -73,20 +91,29 @@ def test_compare():
   # check_hand(
   #   [Card(9,3), Card(10, 2), Card(12, 4)], hands.HIGH_CARD
   # )
-  check_hand(
-    [
-      Card(2,2),
-      Card(2,3),
-      Card(4,1),
-      Card(4,4),
-      Card(6,1),
-      Card(6,3),
-      Card(7,1),
-      Card(7,2),
-      Card(9,1),
-      Card(10,1),
-      Card(11,2),
-      Card(12,1),
-      Card(12,3),
-      Card(13,2)
-    ], hands.FLUSH)
+  assert HandScoring.compare_hands(
+    set([
+      Card(10,1)
+    ]),
+    set([
+      Card(10,2)
+    ])
+  ) == 0
+
+  assert HandScoring.compare_hands(
+    set([
+      Card(10,1), Card(10,3)
+    ]),
+    set([
+      Card(10,2)
+    ])
+  ) == 1
+
+  assert HandScoring.compare_hands(
+    set([
+      Card(10,1), Card(9,1)
+    ]),
+    set([
+      Card(10,2)
+    ])
+  ) == 0
