@@ -82,7 +82,7 @@ class HandScoring:
     '''
     Return the name and set of relevant cards for the best poker hand.
     Suits are ignored for choosing highest ranked hand, because they
-    are ignored in ties in Renjay poker.
+    are ignored in ties in Renj poker.
     '''
     if len(hand) == 0:
       return None
