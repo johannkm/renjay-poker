@@ -84,7 +84,7 @@ class View:
     def render_title():
       render_lines.append(
 '''
-RENJAY POKER is a solitare poker variant.
+RENJAY POKER is a solitaire poker variant.
 
 Select which cards should be filtered to your hand if drawn.
 Everything else will go to the dealer. The game is over once you
